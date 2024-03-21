@@ -1,8 +1,10 @@
 // SPDX-License-Identifier: UNLICENSED
-pragma solidity ^0.8.13;
+pragma solidity ^0.7.0;
+pragma abicoder v2;
 
 import {Test, console} from "forge-std/Test.sol";
 import {Counter} from "../src/Counter.sol";
+import {LogExpMath} from "../src/LogExpMath.sol";
 
 contract CounterTest is Test {
     Counter public counter;
@@ -20,5 +22,13 @@ contract CounterTest is Test {
     function testFuzz_SetNumber(uint256 x) public {
         counter.setNumber(x);
         assertEq(counter.number(), x);
+    }
+
+    function testTesting () public {
+
+        uint term = LogExpMath.pow(999944651648714819, 365);
+        console.log("term", term);
+
+
     }
 }
